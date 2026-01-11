@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block main_css_file %}
+<link rel="stylesheet" href="{% static 'css/adding_page.css' %}">
+{% endblock main_css_file %}
+
+{% block main_content %}
+        <div class="container">
+            <form action="" method="POST" id="my-form">
+                {% csrf_token %}
+                <legend class="border-bottom mb-4">Add Patient</legend>
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{field.id}}"> {{field.label}} </label>
+                        {{field|add_class:'form-control form-control-lg'}}
+                    </div>
+                {%endfor%}
+            </form>
+            <div class="">
+                <input type="submit" value="Add Patient" class="btn btn-primary" onclick="show_popover()">
+            </div>
+        </div>
+        <!-- Manual Backdrop normally hidden -->
+         <div class="manual-backdrop" id="manual-backdrop"></div>
+{% endblock main_content %}
+
+{% block main_js_file %}
+        <script src="{% static 'js/adding_page.js' %}"></script>
+{% endblock main_js_file %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+        <div class="container">
+            <form action="{{url_for('adding_page.add')}}" method="POST" id="my-form">
+                {{form.hidden_tag()}}
+                <legend class="border-bottom mb-4">Add Patient</legend>
+                <div class="form-group">
+                    {{form.operation.label(class='form-control-label')}}
+                    {%if form.operation.erros%}
+                    {{form.operation(class='form-control form-control-lg is-invalid')}}
+                        <div class="invalid-feedback">
+                            {%for error in form.operation.errors %}
+                                <span> {{error}} </span>
+                            {%endfor %}
+                        </div>
+                    {%else%}
+                    {{form.operation(class='form-control form-control-lg',id='hx-operation')}}
+                    {%endif%}
+                </div>
+                <div class="form-group">
+                    {{form.name.label(class='form-control-label')}}
+                    {%if form.name.erros%}
+                        {{form.name(class='form-control form-control-lg is-invalid')}}
+                            <div class="invalid-feedback">
+                                {%for error in form.name.errors %}
+                                    <span> {{error}} </span>
+                                {%endfor %}
+                            </div>
+                    {%else%}
+                    {{form.name(class='form-control form-control-lg',id='hx-name')}}
+                    {%endif%}
+                </div>
+                <div class="age-gender d-flex">
+                    <div class="form-group d-block">
+                        {{form.age.label(class='form-control-label')}}
+                        {%if form.age.erros%}
+                            {{form.age(class='form-control form-control-lg is-invalid')}}
+                                <div class="invalid-feedback">
+                                    {%for error in form.age.errors %}
+                                        <span> {{error}} </span>
+                                    {%endfor %}
+                                </div>
+                        {%else%}
+                        {{form.age(class='form-control form-control-lg',id='hx-age')}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group gender">
+                        {{form.gender.label(class='form-control-label mr-5')}}
+                        {%if form.gender.erros%}
+                            {{form.gender(class='form-control form-control-lg is-invalid')}}
+                                <div class="invalid-feedback">
+                                    {%for error in form.gender.errors %}
+                                        <span> {{error}} </span>
+                                    {%endfor %}
+                                </div>
+                        {%else%}
+                        {{form.gender(class='form-control form-control-lg',id='hx-gender')}}
+                        {%endif%}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{form.complaint.label(class='form-control-label')}}
+                    {%if form.complaint.erros%}
+                        {{form.complaint(class='form-control form-control-lg is-invalid')}}
+                            <div class="invalid-feedback">
+                                {%for error in form.complaint.errors %}
+                                    <span> {{error}} </span>
+                                {%endfor %}
+                            </div>
+                    {%else%}
+                    {{form.complaint(class='form-control form-control-lg',id='hx-complaint')}}
+                    {%endif%}
+                </div>
+                <div class="form-group ">
+                    {{form.pmh.label(class='form-control-label')}}
+                    {%if form.pmh.erros%}
+                        {{form.pmh(class='form-control form-control-lg is-invalid')}}
+                            <div class="invalid-feedback">
+                                {%for error in form.pmh.errors %}
+                                    <span> {{error}} </span>
+                                {%endfor %}
+                            </div>
+                    {%else%}
+                    {{form.pmh(class='form-control form-control-lg',id='hx-pmh')}}
+                    {%endif%}
+                </div>
+                <div class="form-group">
+                    {{form.psh.label(class='form-control-label')}}
+                    {%if form.psh.erros%}
+                        {{form.psh(class='form-control form-control-lg is-invalid')}}
+                            <div class="invalid-feedback">
+                                {%for error in form.psh.errors %}
+                                    <span> {{error}} </span>
+                                {%endfor %}
+                            </div>
+                    {%else%}
+                    {{form.psh(class='form-control form-control-lg',id='hx-psh')}}
+                    {%endif%}
+                </div>
+                <div class="form-group">
+                    {{form.labs.label(class='form-control-label')}}
+                    {%if form.labs.erros%}
+                        {{form.labs(class='form-control form-control-lg is-invalid')}}
+                            <div class="invalid-feedback">
+                                {%for error in form.labs.errors %}
+                                    <span> {{error}} </span>
+                                {%endfor %}
+                            </div>
+                    {%else%}
+                    {{form.labs(class='form-control form-control-lg',id='hx-labs')}}
+                    {%endif%}
+                </div>
+                <div class="form-group">
+                    {{form.rads.label(class='form-control-label')}}
+                    {%if form.rads.erros%}
+                        {{form.rads(class='form-control form-control-lg is-invalid')}}
+                            <div class="invalid-feedback">
+                                {%for error in form.rads.errors %}
+                                    <span> {{error}} </span>
+                                {%endfor %}
+                            </div>
+                    {%else%}
+                    {{form.rads(class='form-control form-control-lg',id='hx-rads')}}
+                    {%endif%}
+                </div>
+            </form>
+            <div class="">
+                {{form.submit(class='btn btn-outline-info',id='preview-btn',onclick="show_popover()")}}
+            </div>
+        </div>
+        <!-- Manual Backdrop normally hidden -->
+         <div class="manual-backdrop" id="manual-backdrop"></div>
+        <script src="{{url_for('static',filename='js/adding_page.js')}}"></script>
+{% endcomment %}

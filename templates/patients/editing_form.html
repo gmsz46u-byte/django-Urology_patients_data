@@ -1,0 +1,19 @@
+<div class="editing-content-container">
+    <p>editing <span class="name_to_edit">{{pt_data.name}}</span></p>
+    {% for key,item in pt_data.items %}
+        <div class="form-control w-full">
+            {% if key == 'pmh' %}
+                <label for="pmh">PMH</label>
+                <select multiple name="PastMedicHx" id="pmh" class="form-control-lg w-full h-fit">
+                    {% for x in item %}
+                    <option value="{{x}}"> {{x}} </option>
+                    {% endfor %}
+                </select>
+            {% else %}
+            <div class="form-contol-label"> {{key}} </div>
+            <input type="text" class="editing-input {{key}}" value="{{item}}">
+            {% endif %}
+        </div>
+        <br>
+    {% endfor %}
+</div>

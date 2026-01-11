@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_css_file %}
+    <link rel="stylesheet" href="{% static 'css/view_page.css' %}">
+{% endblock main_css_file %}
+
+{% block main_content %}
+        <!-- Include this token in your form or script -->
+        <input id="csrf" type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        <!-- Always present in html page -->
+        <div class="btn-group w-full" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-url="{% url 'view_check' %}">
+            <label for="btnradio1" class="btn btn-outline-primary">Search All</label>
+
+            <input type="radio" name="btnradio" id="btnradio2" checked autocomplete="off" class="btn-check" data-url="{% url 'view_check' %}">
+            <label for="btnradio2" class="btn btn-outline-primary">Search By Name</label>
+        </div>
+        <div class="main-content-container w-full">
+            <!-- To respond to check radiobtn1 using js ajax -->
+        </div>
+        <!-- Manual Backdrop normally hidden -->
+        <div class="manual-backdrop" id="manual-backdrop"></div>
+{% endblock main_content %}
+
+{% block main_js_file %}
+    <script src="{% static 'js/view_page.js' %}"></script>
+{% endblock main_js_file %}
+
+
+{% comment %}
+
+{% endcomment %}

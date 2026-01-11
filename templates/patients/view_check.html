@@ -1,0 +1,51 @@
+{%csrf_token %}
+{%if checked %}
+<div class="inner-container">
+    <div class="cards-container">
+        <div class="cards-wrapper d-grid p-10">
+            {% for card in cards_data %}
+                <div class="folder">
+                    <div class="folder-inner">
+                        <div class="cover">
+                            <div class="info">
+                                <span>{{card.operation}}</span>
+                                <span>{{card.name}}</span>
+                                <span>{{card.created_at}}</span>
+                            </div>
+                            <button onclick="extend_name(this)" class="extend-btn">Extend</button>
+                        </div>
+                        <div class="pages" id="page1" style="anchor-name: --page1;">
+                        </div>
+                        <div class="pages" id="page2" style="anchor-name: --page2;">
+                        </div>
+                        <div class="pages" id="page3" style="anchor-name:--page3">
+                        </div>
+                        <div class="back-cover">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Pagination item -->
+    <nav class="mt-5 h-50" aria-label="...">
+        <ul class="pagination" style="display: flex; justify-content:flex-end">
+            {%for page_num in range %}
+                {% if page_num  %}
+                    <li class="page-item">
+                        <a href="#" onclick="iter_pages(this); return false;" class="page-link" title="{{page_num}}">{{page_num}}</a>
+                    </li>
+                    {%else%}
+                    <span> ... </span>
+                {%endif%}
+            {% endfor %}
+        </ul>
+    </nav>
+</div>
+{% endif %}
+
+{% if not checked %}
+    <div class="search-element">
+        <input type="text" class="view-pt-data form-control-lg">
+    </div>
+{% endif %}

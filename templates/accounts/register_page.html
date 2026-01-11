@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block main_css_file %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/register_page.css' %}">
+{% endblock main_css_file %}
+
+{% block main_content %}
+
+
+<!-- From Uiverse.io by alexruix --> 
+<div class="form-box">
+<form class="form" method="POST">
+    {% csrf_token %}
+    <span class="title">Sign up</span>
+    <span class="subtitle">Create a free account with your email.</span>
+    <div class="form-container">
+      <input type="text" class="input" placeholder="username" name="username">
+			<input type="email" class="input" placeholder="Email" name="email">
+			<input type="password" class="input" placeholder="Password" name="password">
+    </div>
+    <button>Sign up</button>
+</form>
+<div class="form-section">
+  <p>Have an account? <a href="">Log in</a> </p>
+</div>
+</div>
+
+
+
+{% endblock main_content %}

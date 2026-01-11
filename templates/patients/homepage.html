@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block main_css_file %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock main_css_file %}
+
+{% block main_content %}
+    <div class="main-content-container">
+        <div class="cards_wrapper d-grid gap-10 p-10">
+           {% for card in todays_added %}
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <p class="operation center-flex mt-20">{{card.operation}}</p>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-content p-20 mt-10">
+                            <span class="age">{{card.age}}</span>
+                            <div class="complaint"> {{card.complaint}} </div>
+                            <div class="labs rads"> 
+                                <div class="labs">
+                                    {% for lab in card.labs %}
+                                        <span title="{{lab.1}}">{{lab.0}}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="rads">
+                                    {% for rad in card.rads %}
+                                        <span title="{{rad.1}}"> {{rad.0}} </span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="{% url 'logout_view' %}">Logout</a>
+{% endblock main_content %}
+    
+{% block main_js_file %}
+    <script src="{% static 'js/homepage.js' %}"></script>
+{% endblock main_js_file %}
+

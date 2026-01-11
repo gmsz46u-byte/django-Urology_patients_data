@@ -1,0 +1,23 @@
+:root {
+  --primary-color: #2a3990;
+  --secondary-color: #e6f0ff;
+  --text-color: #333333;
+  --background-color: #ffffff;
+}
+
+[data-theme="dark"] {
+  --primary-color: #4e5ed3;
+  --secondary-color: #1a1f3d;
+  --text-color: #f0f0f0;
+  --background-color: #121212;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}

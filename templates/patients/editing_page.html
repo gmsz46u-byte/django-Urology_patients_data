@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_css_file %}
+    <link rel="stylesheet" href="{% static 'css/editing_page.css' %}">
+{% endblock %}
+
+{% block main_content %}
+    <!-- For csrf token -->
+    <input type="hidden" id="csrf" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <div class="editing-page-container d-flex">
+        <input type="text" class="form-control form-control-lg" id="editing-input" value="{{name}}">
+        <div class="editing-container w-full">
+
+        </div> 
+        <div class="btn-container d-flex w-full">
+            <button type="submit" class="submit-edit btn btn-success" onclick="submit_edit()">Update</button>
+        </div>
+    </div>
+{% endblock main_content %}
+
+{% block main_js_file %}
+    <script src="{% static 'js/editing_page.js' %}"></script>
+{% endblock main_js_file %}
