@@ -1,0 +1,339 @@
+.page .sidebar li:nth-child(3) a {
+    background-color: #aaa;
+    color: var(--mainColor);
+}
+
+/* main-content start */
+
+/* main radio buttons */
+.btn-group label{
+    /* border-color: var(--bs-btn-active-border-color); */
+    border-color: hsl(from var(--mainColor) h s calc(l + 20));
+    color: var(--text-color);
+}
+.btn-group label:hover{
+    background-color: hsl(from var(--mainColor) h s calc(l + 20));
+}
+.btn-group .btn-check:checked + label{
+    /* border-color: var(--bs-btn-active-border-color); */
+    border-color: hsl(from var(--mainColor) h s calc(l - 20));
+    background-color: hsl(from var(--mainColor) h s calc(l + 20));
+    color: var(--text-color);
+}
+/* .main-content {
+
+} */
+
+.main-content .search-element {
+    height: fit-content;
+    width: 100%;
+    transition: all 1s linear;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+
+    input {
+        background-color: hsl(from var(--base-color) h s calc(l + 20));
+        color: var(--text-color);
+    }
+}
+.search-element .view-pt-data {
+    width: 60%;
+}
+.main-content .cards-wrapper {
+    width: 100%;
+    overflow: hidden;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    transition: all 1s linear;
+
+}
+
+
+/* search one name element */
+.search-one-name.card {
+    background-color: var(--base-color);
+    color: var(--text-color);
+}
+
+.card button {
+    position: absolute;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    z-index: 3;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.extend-btn {
+    right: 10px;
+
+}
+.card .extend-btn::after {
+    content: '\f424';
+    font-family: var(--fa-style-family-classic);
+    font-weight: 900;
+    color: var(--mainColor);
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    z-index: 5;
+}
+.search-one-name .delete-btn {
+    right: 10px;
+}
+
+.card .delete-btn::after {
+    content: '\f2ed';
+    font-family: var(--fa-style-family-classic);
+    font-weight: 900;
+    color: var(--red-color);
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    z-index: 5;
+
+}
+
+/* deleting btn in search one name card is 10px from right , has width of 40px , leaving extra 10px for spacing >> editing-btn 60px from right */
+
+.search-one-name .editing-btn{
+    right: 60px;
+}
+.search-one-name .editing-btn::after {
+    content: '\f013';
+    font-family: var(--fa-style-family-classic);
+    font-weight: 900;
+    color: var(--x-color);
+    position: absolute;
+    top: 5px;
+    right: 15px;;
+    width: 15px;
+    height: 15px;
+    z-index: 5;
+}
+/* 
+/* search one name */
+.search-one-name {
+    width: 50%;
+    min-width: 500px;
+    max-height: 800px;
+    max-width: 1000px;
+    min-height: 300px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ddd;
+    opacity: 0.9;
+    align-self: center;
+    justify-self: center;
+}
+.search-one-name p {
+    padding-left: 10px;
+}
+
+
+[popover] {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 300px;
+    height: 200px;
+    gap: 35px;
+    border: none;
+    box-shadow: 0 0 10px #ddd;
+    background: white;
+    color: red;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 100;
+}
+
+/* manual backdrop */
+/* start invisible */
+.manual-backdrop {
+  position:fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10; /* Below the popover */
+}
+
+.hidden {
+    display: none;
+
+}
+.delete-popover {
+    width: 300px;
+    height: 300px;
+}
+/* .cards-wrapper .card .complaint {
+}
+.cards-wrapper .card .pmh {
+}
+.cards-wrapper .card .psh {
+}
+.cards-wrapper .card .labs {
+}
+.cards-wrapper .card .rads {
+} */
+
+
+/* main-content end */
+
+
+
+
+
+
+
+
+/* Folder css styling */
+
+
+.folder {
+    width: 300px;
+    aspect-ratio: 3/2;
+    perspective: 1000px;
+    margin: 30px auto;
+
+    .folder-inner {
+        position: relative;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        cursor: pointer;
+
+        }
+
+        .cover {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: hsl(from var(--mainColor) h s calc(l + 20));
+            z-index: 10;
+            /* clip-path: path("M 0,40 A 10,10 0,0,1 10,30 L 160,30 A 5,5 0,0,0 165,25 L 165,10 A 10,10 0,0,1 175,0 L 290,0 A 10,10 0,0,1 300,10 L 300,190 A 10,10 0,0,1 290,200 L 10,200 A 10,10 0,0,1 0,190 Z"); */
+            clip-path: shape(from 0 12% , arc to 2% 10% of 3% cw, line to 50% 10% ,curve to 60% 0 with 55% 0%, line to 98% 0, curve to 100% 2% with 100% 0%, line to 100% 98% , arc to 98% 100% of 2% cw, line to 2% 100% , arc to 0% 98% of 2% cw, close);
+            will-change: transform;
+            transform-origin: bottom center;
+            transition: all 0.4s ease;
+
+            .info{
+                display: flex;
+                position: absolute;
+                justify-content: center;
+                align-items: center;
+                left: 20%;
+                top: 30%;
+                flex-direction: column;
+                width: 80%;
+                color:var(--text-color);
+                }
+   
+
+            .extend-btn {
+                position: absolute;
+                left: 10%;
+                top: 45%;
+                width: 20%;
+                height: 15%;
+                border-radius: 10px;
+                font-size: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(45deg, red, green, blue);
+                color: transparent;
+                font-weight: bold;
+                background-clip: text;
+
+                &:hover {
+                    color: var(--text-color) ;
+                    background-clip: border-box;
+
+                }
+                
+            }
+        }
+
+        .pages {
+            width: 100%;
+            position: absolute;
+            background-color: #fff;
+            inset: .05rem;
+            background-color: #E4E4E7;
+            border-radius: 10px;
+            corner-shape: round;
+            will-change: transform;
+            transform-origin: bottom center;
+            transition: transform 0.4s ease;
+            
+
+        }
+        .back-cover {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* clip-path: path("M 0,10 A 10,10 0,0,1 10,0 L 115,0 A 10,10 0,0,1 125,10 L 125,25 A 10,10 0,0,0 130,30 L 290,30 A 10,10 0,0,1 300,40 L 300,190 A 10,10 0,0,1 290,200 L 10,200 A 10,10 0,0,1 0,190 Z"); */
+            clip-path: shape(from 0 2% , arc to 2% 0 of 2% cw, line to 40% 0 ,curve to 50% 10% with 45% 0%, line to 98% 10% , arc to 100% 12% of 2% cw , line to 100% 98% , arc to 98% 100% of 2% cw, line to 2% 100% ,arc to 0 98% of -2% cw ,close);
+            background-color: hsl(from var(--mainColor) h s calc(l + 20));
+            bottom: 10px;
+            
+        }
+
+        &:hover {
+            .cover {
+                transform: rotate3d(-1,0,0,35deg);
+                transition-duration: 0.4s ;
+            }
+
+            .pages {
+                transition-duration: .4s;
+            }
+            #page1 {
+                transform: rotate3d(-1,0,0,30deg);
+                
+            }
+            #page2 {
+                transform: rotate3d(-1,0,0,22deg);
+                background-color: #D4D4D8;
+
+            }
+            #page3{
+                transform: rotate3d(-1,0,0,14deg);
+                background-color: #A1A1AA;
+
+            }
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+.page .sidebar li:nth-child(4) a {
+    background-color: #aaa;
+    color: var(--mainColor);
+}
+.editing-page-container {
+    flex-flow: column nowrap;
+    gap: 20px;
+}
+.editing-content-container .form-control {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    justify-self: center;
+    align-items: center;
+}
+.editing-content-container .form-control .editing-input {
+    flex-grow: 1;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+
+}
+.btn-container {
+    height: 100px;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.submit-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+
+}
+/* .editing-input {
+
+} */
